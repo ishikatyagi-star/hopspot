@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/ButtonLink";
@@ -22,10 +23,13 @@ export function Header() {
           href="/"
           className="flex items-center gap-2 text-sm font-semibold tracking-wide text-white"
         >
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/10">
-            h
-          </span>
-          {HOPSPOT.brand.toLowerCase()}
+          <Image
+            src="/hopspot-logo.jpeg"
+            alt="Hopspot"
+            width={120}
+            height={40}
+            className="h-8 w-auto object-contain"
+          />
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm text-white/70 md:flex">

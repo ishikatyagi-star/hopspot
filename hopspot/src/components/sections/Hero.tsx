@@ -1,7 +1,8 @@
+import Link from "next/link";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container } from "@/components/ui/Container";
 import { buildWhatsAppLink } from "@/lib/contact";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, MessageCircle, Plane } from "lucide-react";
 
 export function Hero() {
   return (
@@ -10,8 +11,8 @@ export function Hero() {
       <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:64px_64px]" />
 
       <Container className="relative py-20 sm:py-28">
-        <div className="max-w-3xl">
-          <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold tracking-wide text-white/80">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold tracking-wide text-white/80">
             Serving HNIs, Business Leaders, Corporates & Global Travelers
             <span className="h-1 w-1 rounded-full bg-white/40" />
             24×7 Dedicated Travel Assistance
@@ -30,7 +31,14 @@ export function Hero() {
             From executive business travel to luxury family holidays and large-scale corporate movements, Hopspot simplifies complex travel through intelligent systems, global partnerships and dedicated human support.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-4">
+            <Link
+              href="/flights"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-hopspot-gold px-6 py-3.5 text-sm font-semibold text-black shadow-[0_0_20px_rgba(245,185,66,0.4)] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hopspot-accent focus-visible:ring-offset-2 focus-visible:ring-offset-hopspot-bg"
+            >
+              <Plane className="h-5 w-5" />
+              Search Flights
+            </Link>
             <ButtonLink href="#services" variant="primary">
               Plan Your Journey
               <ArrowRight className="h-4 w-4" />

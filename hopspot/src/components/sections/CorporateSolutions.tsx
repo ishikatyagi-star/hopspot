@@ -27,6 +27,12 @@ const solutions = [
   },
 ] as const;
 
+const bulletPoints = [
+  "Custom negotiated pricing",
+  "Bulk and recurring travel management",
+  "Priority escalation channels",
+] as const;
+
 export function CorporateSolutions() {
   return (
     <section id="corporate" className="bg-hopspot-bg py-16 sm:py-20">
@@ -43,9 +49,9 @@ export function CorporateSolutions() {
           </p>
         </div>
 
-        <div className="mx-auto mt-10 max-w-2xl">
+        <div className="mx-auto mt-10 max-w-2xl text-center">
           <p className="text-sm font-semibold text-white">We work with:</p>
-          <ul className="mt-3 flex flex-wrap gap-2">
+          <ul className="mt-3 flex flex-wrap gap-2 justify-center">
             {clientTypes.map((type) => (
               <li
                 key={type}
@@ -57,8 +63,11 @@ export function CorporateSolutions() {
           </ul>
         </div>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          <p className="text-sm font-semibold text-white lg:col-span-3">Our corporate solutions include:</p>
+        <div className="mt-10">
+          <h3 className="mb-6 text-center text-xl font-semibold text-white sm:text-2xl">
+            Our corporate solutions include:
+          </h3>
+          <div className="grid gap-5 lg:grid-cols-3">
           {solutions.map(({ title, Icon }) => (
             <div
               key={title}
@@ -70,24 +79,25 @@ export function CorporateSolutions() {
               <h3 className="mt-4 text-base font-semibold text-white">{title}</h3>
             </div>
           ))}
+          </div>
+
+        <div className="mt-6 grid gap-5 sm:grid-cols-3">
+          {bulletPoints.map((point) => (
+            <div
+              key={point}
+              className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft"
+            >
+              <p className="text-sm font-medium text-white/90">{point}</p>
+            </div>
+          ))}
         </div>
-
-        <ul className="mt-6 space-y-2 text-sm text-white/65">
-          <li>• Custom negotiated pricing</li>
-          <li>• Bulk and recurring travel management</li>
-          <li>• Priority escalation channels</li>
-        </ul>
-
-        <p className="mt-8 max-w-2xl text-sm leading-6 text-white/70">
-          We function as an operational extension of your business — ensuring travel runs efficiently, transparently and without disruption.
-          For companies handling frequent employee movement, leadership travel or event logistics, Hopspot provides reliability at scale.
-        </p>
+        </div>
 
         <div
           id="contact"
           className="mt-14 rounded-2xl border border-white/10 bg-[radial-gradient(800px_circle_at_25%_0%,rgba(34,197,94,0.16),transparent_55%),radial-gradient(800px_circle_at_75%_100%,rgba(245,185,66,0.14),transparent_55%)] p-8 shadow-soft"
         >
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row md:items-center md:justify-center">
             <div>
               <p className="text-sm font-semibold text-white">For Partnerships</p>
               <p className="mt-2 text-sm text-white/70">

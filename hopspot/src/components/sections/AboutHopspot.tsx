@@ -4,7 +4,7 @@ export function AboutHopspot() {
   return (
     <section id="about" className="bg-hopspot-bg py-16 sm:py-20">
       <Container>
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             About Hopspot
           </h2>

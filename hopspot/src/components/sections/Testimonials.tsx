@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Radio } from "lucide-react";
 
@@ -8,6 +9,7 @@ const testimonials = [
     initials: "RM",
     name: "Rahul Mehta",
     city: "Delhi",
+    image: "/testimonials/testimonial-1.jpeg",
   },
   {
     quote:
@@ -15,6 +17,7 @@ const testimonials = [
     initials: "AV",
     name: "Anita & Vikram",
     city: "Bangalore",
+    image: "/testimonials/testimonial-2.jpeg",
   },
   {
     quote:
@@ -22,6 +25,7 @@ const testimonials = [
     initials: "SP",
     name: "Sneha Patil",
     city: "Mumbai",
+    image: "/testimonials/testimonial-3.jpeg",
   },
   {
     quote:
@@ -29,6 +33,7 @@ const testimonials = [
     initials: "AK",
     name: "Arjun Kapoor",
     city: "Pune",
+    image: "/testimonials/testimonial-4.jpeg",
   },
   {
     quote:
@@ -36,6 +41,15 @@ const testimonials = [
     initials: "PS",
     name: "Priya Sharma",
     city: "Hyderabad",
+    image: "/testimonials/testimonial-5.jpeg",
+  },
+  {
+    quote:
+      "Exceptional service and attention to detail. Hopspot exceeded our expectations.",
+    initials: "DK",
+    name: "Deepak Kumar",
+    city: "Chennai",
+    image: "/testimonials/testimonial-6.jpeg",
   },
 ] as const;
 
@@ -94,8 +108,13 @@ export function Testimonials() {
                     “{t.quote}”
                   </blockquote>
                   <figcaption className="mt-6 flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-white">
-                      {t.initials}
+                    <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full">
+                      <Image
+                        src={t.image}
+                        alt={t.name}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                     <div>
                       <div className="text-sm font-semibold text-white">

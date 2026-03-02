@@ -1,50 +1,68 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { buildWhatsAppLink, HOPSPOT } from "@/lib/contact";
-import { MessageCircle } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
 const quickLinks = [
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Corporate", href: "#corporate" },
-  { label: "Why Hopspot", href: "#why" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "#services", external: false },
+  { label: "Testimonials", href: "#testimonials", external: false },
+  { label: "Corporate", href: "#corporate", external: false },
+  {
+    label: "WhatsApp",
+    href: buildWhatsAppLink("Hi Hopspot! I'd like to get in touch."),
+    external: true,
+  },
 ] as const;
 
 export function Footer() {
   return (
-    <footer id="contact" className="bg-hopspot-bg pb-10 pt-16">
+    <footer
+      id="contact"
+      className="relative overflow-hidden pb-10 pt-16"
+      style={{
+        backgroundImage: `linear-gradient(rgba(10, 15, 25, 0.92), rgba(10, 15, 25, 0.92)), url(https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920)`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-            Get in Touch
-          </h2>
-          <p className="mt-2 text-sm font-semibold uppercase tracking-wider text-hopspot-gold">
-            {HOPSPOT.brand} Travel Technologies LLP
-          </p>
-        </div>
-
-        <div className="mt-10 grid gap-10 border-t border-white/10 pt-10 md:grid-cols-12">
+        <div className="grid gap-10 border-t border-white/10 pt-10 md:grid-cols-12">
           <div className="md:col-span-5">
-            <Link href="/" className="text-lg font-semibold text-white">
-              {HOPSPOT.brand}
+            <Link href="/" className="inline-block">
+              <Image
+                src="/hopspot-logo.jpeg"
+                alt="Hopspot"
+                width={140}
+                height={48}
+                className="h-12 w-auto object-contain"
+              />
             </Link>
-            <p className="mt-3 max-w-md text-sm leading-6 text-white/60">
-              Hopspot — Your Trip. Your Way.
-              <br />
-              Premium Travel Management & Concierge Solutions.
+            <p className="mt-4 max-w-sm text-sm leading-6 text-white/70">
+              Redefining travel experiences for discerning individuals and forward-thinking enterprises.
             </p>
           </div>
 
           <div className="md:col-span-3">
             <p className="text-sm font-semibold text-white">Quick Links</p>
             <ul className="mt-4 space-y-3 text-sm text-white/60">
-              {quickLinks.map((l) => (
-                <li key={l.href}>
-                  <a className="hover:text-white" href={l.href}>
-                    {l.label}
-                  </a>
+              {quickLinks.map((item) => (
+                <li key={item.label}>
+                  {item.external ? (
+                    <a
+                      className="inline-flex items-center gap-2 hover:text-white"
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MessageCircle className="h-4 w-4" />
+                      {item.label}
+                    </a>
+                  ) : (
+                    <a className="inline-flex items-center hover:text-white" href={item.href}>
+                      {item.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -54,30 +72,28 @@ export function Footer() {
             <p className="text-sm font-semibold text-white">Contact</p>
             <ul className="mt-4 space-y-3 text-sm text-white/60">
               <li>
-                <a className="hover:text-white" href={`mailto:${HOPSPOT.email}`}>
+                <a
+                  className="inline-flex items-center gap-2 hover:text-white"
+                  href={`mailto:${HOPSPOT.email}`}
+                >
+                  <Mail className="h-4 w-4 shrink-0" />
                   {HOPSPOT.email}
                 </a>
               </li>
               <li>
-                <a className="hover:text-white" href={`tel:${HOPSPOT.phoneWa}`}>
+                <a
+                  className="inline-flex items-center gap-2 hover:text-white"
+                  href={`tel:${HOPSPOT.phoneWa}`}
+                >
+                  <Phone className="h-4 w-4 shrink-0" />
                   {HOPSPOT.phoneDisplay}
                 </a>
               </li>
-              <li>{HOPSPOT.location}</li>
+              <li className="inline-flex items-center gap-2">
+                <MapPin className="h-4 w-4 shrink-0" />
+                {HOPSPOT.location}
+              </li>
             </ul>
-            <p className="mt-3 text-xs text-white/50">
-              For corporate partnerships and large-scale requirements, please mention &quot;B2B Enquiry&quot; in your subject line.
-            </p>
-
-            <a
-              href={buildWhatsAppLink("Hi Hopspot! I'd like to get in touch.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-white/70 hover:bg-white/10"
-            >
-              <MessageCircle className="h-4 w-4" />
-              Chat on WhatsApp
-            </a>
           </div>
         </div>
 
